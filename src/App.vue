@@ -1,18 +1,28 @@
 <script setup>
 import Navbar from './components/Navbar.vue';
 const links = [
-  {id: 1, name: 'Home', path: '/'},
-  {id: 2, name: 'About Us', path: '/about'},
-  {id: 3, name: 'Docs', path: '/docs'}
+  {id: 1, name: 'Activités', path: '/activity'},
+  {id: 2, name: "L'équipe", path: '/team'},
+  {id: 3, name: 'Actualités', path: '/actuality'},
+  {id: 4, name: 'Nous et vous', path: '/discover-us'}
 ]
-</script>
+</script>   
 
 <template>
-  <Navbar title="DemoApp" :links="links" />
-  <div class="pt-20">
-    <router-view />
-  </div>
+  <v-app>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-</style>
+<script>
+
+export default {
+  name: 'App',
+
+  data: () => ({
+    //
+  }),
+}
+</script>

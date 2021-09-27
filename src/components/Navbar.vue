@@ -1,22 +1,45 @@
-<script setup>
-import {defineProps} from 'vue'
-import Button from './forms/Button.vue';
+<script>
+import CountryFlag from 'vue-country-flag-next'
 
-const props = defineProps({
-  title: {type: String, required: true},
-  links: {type: Array, required: true}
-});
+export default {
+  components: {
+    CountryFlag
+  },
+  props: {
+    links: {
+      type: Array,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    }
+  },
+  data(){
+    return {
+      options: [
+        {
+          code: "fr",
+        },
+        {
+          code: "en",
+        }
+      ]
+    }
+  }
+}
+
 </script>
 
 <template>
-<div class="fixed left-0 right-0 top-0 h-16 shadow-md border-b-2 border-gray-100 bg-gray-900">
-  <nav class="flex items-center container mx-auto h-full justify-between">
+<div class="navbar-transparent">
+  <nav class="flex items-center container  h-full justify-between">
     <h1 class="font-semibold uppercase text-lg text-gray-200">
       {{title}}
     </h1>
     <div>
       <ul class="flex items-center space-x-10 text-sm">
-        <li v-for="link in props.links" :key="link.id">
+        <li v-for="link in links" :key="link.id">
           <router-link :to="link.path" class="text-gray-400 hover:text-gray-100">
             {{link.name}}
           </router-link>
@@ -24,7 +47,10 @@ const props = defineProps({
       </ul>
     </div>
     <div>
-      <Button text="Login"/>
+        <select >
+          <option value="fr"><country-flag country='fr' size='small'/></option>
+          <option value="gb"> <country-flag country='gb' size='small'/></option>   
+        </select>        
     </div>
   </nav>
 </div>
